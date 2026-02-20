@@ -121,9 +121,9 @@ Given the MRI magnitude image \( I(x) \) and the spatial noise estimate
 
 $$
 
-$$
+
 \tilde{I}(x) = \sigma_0(x)\,\sqrt{\frac{\Theta_1(x)^2 I(x)^2}{\sigma_0(x)^2} - \Theta_2(x)}
-$$
+
 ---
 
 ### Gaussianity-Enforcing Objective
