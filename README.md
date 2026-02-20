@@ -317,8 +317,8 @@ and **Structural Similarity Index Measure (SSIM)**.
 PSNR measures pixel-wise reconstruction fidelity with respect to a clean
 reference image.
 
-The mean squared error (MSE) between a clean image \( I \) and a denoised image
-\( \hat{I} \) is defined as:
+The mean squared error (MSE) between a clean image $\( I \)$ and a denoised image
+$\( \hat{I} \)$ is defined as:
 
 $$
 \mathrm{MSE} = \frac{1}{N} \sum_{i=1}^{N} \left(I_i - \hat{I}_i\right)^2
