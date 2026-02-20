@@ -383,7 +383,7 @@ structural similarity.
 | Noise2Detail             | 26.13    | 0.67 |
 | Proposed VSTNet-DDPM (Ours) | 27.49    | 0.923 |
 
-**Baseline Methods.**
+## Baseline Methods 
 
 - **FoI-BM3D** [1] is a classical non-local variance stabilization and denoising method that extends BM3D by
   incorporating a fixed variance-stabilizing transform for Rician noise.
