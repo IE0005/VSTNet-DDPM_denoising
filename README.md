@@ -123,7 +123,6 @@ $$
 - \( \mathrm{Skew}(\cdot) \) enforces symmetry  
 - \( \mathrm{ExcessKurt}(\cdot) \) penalizes heavy tails  
 - \( \mathrm{Mean}(\cdot) \) suppresses DC bias  
-
 $$
 
 
@@ -356,10 +355,14 @@ $$
 $$
 
 where:
+
+$$
 - \( \mu_I, \mu_{\hat{I}} \) are mean intensities  
 - \( \sigma_I^2, \sigma_{\hat{I}}^2 \) are variances  
 - \( \sigma_{I\hat{I}} \) is the covariance  
 - \( C_1, C_2 \) are stability constants  
+$$
+
 
 SSIM values range from \([-1, 1]\), with values closer to 1 indicating higher
 structural similarity.
