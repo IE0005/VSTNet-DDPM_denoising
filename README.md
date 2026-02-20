@@ -120,16 +120,10 @@ Given the MRI magnitude image \( I(x) \) and the spatial noise estimate
 \( \sigma_0(x) \), the variance-stabilized image is computed as:
 
 $$
-\tilde{I}(x)
-=
-\sigma_0(x)\,
-\sqrt{
-\frac{\Theta_1(x)^2\, I(x)^2}{\sigma_0(x)^2}
--
-\Theta_2(x)
-}
-$$
 
+$$
+\tilde{I}(x) = \sigma_0(x)\,\sqrt{\frac{\Theta_1(x)^2 I(x)^2}{\sigma_0(x)^2} - \Theta_2(x)}
+$$
 ---
 
 ### Gaussianity-Enforcing Objective
@@ -139,15 +133,17 @@ an approximately standard Gaussian distribution by minimizing a
 moment-matching loss:
 
 $$
-\mathcal{J}
-=
-\lambda_1 \big(1 - \mathrm{Var}(\tilde{I})\big)^2
-+
-\lambda_2 \mathrm{Skew}(\tilde{I})^2
-+
-\lambda_3 \mathrm{ExcessKurt}(\tilde{I})^2
-+
+\mathcal{J} =
+\lambda_1 (1 - \mathrm{Var}(\tilde{I}))^2 +
+\lambda_2 \mathrm{Skew}(\tilde{I})^2 +
+\lambda_3 \mathrm{ExcessKurt}(\tilde{I})^2 +
 \lambda_4 \mathrm{Mean}(\tilde{I})^2
+$$
+
+The optimal parameters are obtained as:
+
+$$
+\Theta^* = \arg\min_{\Theta} \mathcal{J}
 $$
 
 where:
@@ -158,10 +154,7 @@ where:
 
 The optimal parameters are obtained as:
 
-$$
-\Theta^{*} = \arg\min_{\Theta} \mathcal{J}
-$$
----
+
 <p align="center">
   <img src="vstnet.png" width="600"/>
 </p>
