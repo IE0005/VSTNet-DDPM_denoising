@@ -23,7 +23,7 @@ During inference, a weighted data-fidelity term is incorporated as a regularizat
 To address this challenge, we propose a **two-stage denoising pipeline** that supports both training and end-to-end denoising during inference.
 
 
-Dataset: 
+## Dataset: 
 
 We use the Simulated Brain Database (SBD) (https://brainweb.bic.mni.mcgill.ca/), which provides 3D brain MRI volumes generated from normal and multiple sclerosis (MS) anatomical models. The dataset includes T1-, T2-, and proton-density (PD) weighted images with varying slice thickness, noise levels, and intensity non-uniformity. The voxel values are in magnitude, not complex. 
 In this study, we use the T1, T2, and PD modalities with slice thicknesses of 1, 3, 5, 7, and 9 mm, all generated with zero noise and zero intensity non-uniformity, which serve as ground-truth clean images. To reduce computational cost, we restrict our experiments to coronal 2D slices for both training and inference. The dataset contains a total of 1,938 coronal slices, which are partitioned into 80% for training and 20% for testing.
@@ -50,7 +50,7 @@ The proposed denoising pipeline consists of four stages:
 
 ---
 ## Pipeline Summary
-# Training
+## Training
 ### Stage I — Variance Stabilization (Physics-Informed)
 #### Add spatially varying Rician noise to the magnitude images
 ---
@@ -153,7 +153,7 @@ $$
 \tilde{I} = A_0 + \sigma(x)\,\mathcal{N}(0,1)
 $$
 
-## Inference
+### Inference
 
 At inference time, the stabilized image produced by VSTNet is denoised using the
 pretrained DDPM. We employ DDIM sampling with a weighted data-fidelity term to
