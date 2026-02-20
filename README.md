@@ -41,7 +41,7 @@ The workflow of the proposed denoising pipeline is as follows:
 4. Use a Diffusion model that is trained to remove Gaussian noise. 
 
 
-> **Dataset → SigmaNet → VSTNet → Diffusion → Denoised MRI**
+> **Add Non-stationary Rician noise → SigmaNet → VSTNet → Diffusion → Denoised MRI**
 
 ---
 <p align="center">
@@ -55,17 +55,15 @@ Training
 Add spatially varying Rician noise to the magnitude images
 ---
 <p align="center">
-  <img src="non-stat_rician_noise_add.png" width=“600"/>
+  <img src="non-stat_rician_noise_add.png" width="600"/>
 </p>
-
 ---
 
 1. **SigmaNet** predicts spatial noise variance
 ---
 <p align="center">
-  <img src=“sigmanet.png” width=“600"/>
+  <img src="sigmanet.png" width="600"/>
 </p>
-
 ---
 
 2. **VSTNet** transforms non-stationary Rician → stationary Gaussian
@@ -106,9 +104,8 @@ Training objective:
 Θ* = argmin_Θ J
 ---
 <p align="center">
-  <img src=“vstnet.png” width=“600"/>
+  <img src="vstnet.png" width="600"/>
 </p>
-
 ---
 
 ### Stage II — Diffusion Denoising
@@ -119,7 +116,7 @@ Diffusion denoisers operate on IID Gaussian corrupted images:
 
 ---
 <p align="center">
-  <img src=“ddpm_train.png” width=“600"/>
+  <img src="ddpm_train.png" width="600"/>
 </p>
 
 ---
@@ -130,9 +127,8 @@ After VST, the stabilized image:
 The diffusion model then removes the approximately IID Gaussian noise from the variance-stabilized image.
 ---
 <p align="center">
-  <img src=“ddim.png” width=“600"/>
+  <img src="ddim.png" width="600"/>
 </p>
-
 ---
 
 
@@ -360,7 +356,6 @@ structural similarity.
 <p align="center">
   <img src="result.png" width="900"/>
 </p>
-
 ---
 
 ### Quantitative Results
