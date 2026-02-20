@@ -4,8 +4,7 @@
 
 ## Overview
 
-Magnetic Resonance Imaging (MRI) magnitude images are corrupted by **Rician-distributed noise**. Classical MRI denoisers typically assume **stationary** noise, which holds approximately for ideal single-coil acquisitions.
-
+Magnetic Resonance Imaging (MRI) magnitude images are corrupted by Rician-distributed noise, originating from the magnitude operation applied to complex MRI data and leading to signal-dependent noise characteristics, particularly at low signal-to-noise ratios and fundamentally differs from additive Gaussian noise.
 However, in real clinical scanners with:
 
 - multi-coil receivers
