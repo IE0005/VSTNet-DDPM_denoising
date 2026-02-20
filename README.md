@@ -74,20 +74,20 @@ Gaussian distribution.
 Given the MRI magnitude image I(x) and the spatial noise estimate σ₀(x) from
 SigmaNet, VSTNet predicts two positive parameters Θ₁(x) and Θ₂(x):
 
-$Θ = (Θ₁ , Θ₂), 
+Θ = (Θ₁ , Θ₂), 
 
 Θ₁(x) > 0
 
-Θ₂(x) ≥ 0$
+Θ₂(x) ≥ 0
 
 
 The stabilized image is computed as:
 
-$Ĩ(x) = σ₀(x) * √( (Θ₁(x)² * I(x)² / σ₀(x)²) − Θ₂(x) )$
+Ĩ(x) = σ₀(x) * √( (Θ₁(x)² * I(x)² / σ₀(x)²) − Θ₂(x) )
 
 VSTNet is trained to enforce approximate Gaussianity below:
 
-$J = λ₁·(1 − Var(Ĩ))² + λ₂·Skew(Ĩ)² + λ₃·ExcessKurt(Ĩ)² + λ₄·Mean(Ĩ)²$
+J = λ₁·(1 − Var(Ĩ))² + λ₂·Skew(Ĩ)² + λ₃·ExcessKurt(Ĩ)² + λ₄·Mean(Ĩ)²
 
 
 Where:
@@ -105,6 +105,62 @@ coefficients: λ₁, λ₂, λ₃, λ₄ > 0
 Training objective:
 
 Θ* = argmin_Θ J
+### VSTNet Formulation
+
+VSTNet predicts two spatially varying parameters at each pixel:
+
+$$
+\Theta(x) = \big(\Theta_1(x), \Theta_2(x)\big),
+\qquad
+\Theta_1(x) > 0,\;
+\Theta_2(x) \ge 0
+$$
+
+Given the MRI magnitude image \( I(x) \) and the spatial noise estimate
+\( \sigma_0(x) \), the variance-stabilized image is computed as:
+
+$$
+\tilde{I}(x)
+=
+\sigma_0(x)\,
+\sqrt{
+\frac{\Theta_1(x)^2\, I(x)^2}{\sigma_0(x)^2}
+-
+\Theta_2(x)
+}
+$$
+
+---
+
+### Gaussianity-Enforcing Objective
+
+VSTNet is trained to ensure that the stabilized image \( \tilde{I}(x) \) follows
+an approximately standard Gaussian distribution by minimizing a
+moment-matching loss:
+
+$$
+\mathcal{J}
+=
+\lambda_1 \big(1 - \mathrm{Var}(\tilde{I})\big)^2
++
+\lambda_2 \mathrm{Skew}(\tilde{I})^2
++
+\lambda_3 \mathrm{ExcessKurt}(\tilde{I})^2
++
+\lambda_4 \mathrm{Mean}(\tilde{I})^2
+$$
+
+where:
+- \( \mathrm{Var}(\cdot) \) enforces unit variance  
+- \( \mathrm{Skew}(\cdot) \) enforces symmetry  
+- \( \mathrm{ExcessKurt}(\cdot) \) penalizes heavy tails  
+- \( \mathrm{Mean}(\cdot) \) suppresses DC bias  
+
+The optimal parameters are obtained as:
+
+$$
+\Theta^{*} = \arg\min_{\Theta} \mathcal{J}
+$$
 ---
 <p align="center">
   <img src="vstnet.png" width="600"/>
@@ -113,7 +169,11 @@ Training objective:
 
 ### Stage II — Denoising Diffusion 
 
-Diffusion denoisers operate on IID Gaussian corrupted images:
+After variance stabilization, the noise-corrupted image can be modeled as
+approximately IID Gaussian.
+
+We use a **Denoising Diffusion Probabilistic Model (DDPM)** trained exclusively
+on clean MRI images. During training, DDPM corrupts clean images as:
 
 Ĩ = x₀ + σ·ε,    ε ~ N(0, 1) in training 
 
@@ -127,7 +187,9 @@ After VST, the stabilized image:
 
 Ĩ = A₀ + σ(x).N(x;0,1),  
 
-The diffusion model then removes the approximately IID Gaussian noise from the variance-stabilized image.
+At inference time, the stabilized image produced by VSTNet is denoised using
+the pretrained DDPM. We employ **DDIM sampling** with a weighted data-fidelity
+term to improve robustness on previously unseen data.
 ---
 <p align="center">
   <img src="ddim.png" width="600"/>
