@@ -74,37 +74,7 @@ Gaussian distribution.
 Given the MRI magnitude image I(x) and the spatial noise estimate σ₀(x) from
 SigmaNet, VSTNet predicts two positive parameters Θ₁(x) and Θ₂(x):
 
-Θ = (Θ₁ , Θ₂), 
 
-Θ₁(x) > 0
-
-Θ₂(x) ≥ 0
-
-
-The stabilized image is computed as:
-
-Ĩ(x) = σ₀(x) * √( (Θ₁(x)² * I(x)² / σ₀(x)²) − Θ₂(x) )
-
-VSTNet is trained to enforce approximate Gaussianity below:
-
-J = λ₁·(1 − Var(Ĩ))² + λ₂·Skew(Ĩ)² + λ₃·ExcessKurt(Ĩ)² + λ₄·Mean(Ĩ)²
-
-
-Where:
-
-Var(Ĩ) → variance
-
-Skew(Ĩ) → skewness
-
-ExcessKurt(Ĩ) → kurtosis − 3
-
-Mean(Ĩ) controls DC component
-
-coefficients: λ₁, λ₂, λ₃, λ₄ > 0
-
-Training objective:
-
-Θ* = argmin_Θ J
 ### VSTNet Formulation
 
 VSTNet predicts two spatially varying parameters at each pixel:
@@ -121,7 +91,9 @@ Given the MRI magnitude image \( I(x) \) and the spatial noise estimate
 
 
 
-\tilde{I}(x) = \sigma_0(x)\,\sqrt{\frac{\Theta_1(x)^2 I(x)^2}{\sigma_0(x)^2} - \Theta_2(x)}
+$$
+\tilde{I}(x) = \sigma_0(x)\sqrt{\frac{\Theta_1(x)^2 I(x)^2}{\sigma_0(x)^2} - \Theta_2(x)}
+$$
 
 
 ### Gaussianity-Enforcing Objective
@@ -144,13 +116,14 @@ $$
 \Theta^* = \arg\min_{\Theta} \mathcal{J}
 $$
 
+$$
 where:
 - \( \mathrm{Var}(\cdot) \) enforces unit variance  
 - \( \mathrm{Skew}(\cdot) \) enforces symmetry  
 - \( \mathrm{ExcessKurt}(\cdot) \) penalizes heavy tails  
 - \( \mathrm{Mean}(\cdot) \) suppresses DC bias  
 
-The optimal parameters are obtained as:
+$$
 
 
 <p align="center">
@@ -418,9 +391,9 @@ structural similarity.
 
 | Methodology              | PSNR (dB) | SSIM |
 |--------------------------|-----------|------|
-| FoI-BM3D (Ours)          | 26.41    | 0.78 |
+| FoI-BM3D           | 26.41    | 0.78 |
 | Noise2Detail             | 26.13    | 0.67 |
-| Proposed VST-DDPM (Ours) | 27.49    | 0.923 |
+| Proposed VSTNet-DDPM (Ours) | 27.49    | 0.923 |
 
 **Baseline Methods.**
 
@@ -433,7 +406,7 @@ structural similarity.
   fine structural details by learning residual noise patterns from noisy data.
   It relies primarily on learned image statistics. 
 
-The proposed **VST-DDPM** method outperforms FoI-BM3D and Noise2Detail in both
+####The proposed **VSTNet-DDPM** method outperforms FoI-BM3D and Noise2Detail in both
 PSNR and SSIM.
 ---
 ## 📄 License
