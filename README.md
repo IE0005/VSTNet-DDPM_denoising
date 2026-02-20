@@ -332,7 +332,7 @@ $$
 \mathrm{PSNR} = 10 \log_{10} \left( \frac{I_{\max}^2}{\mathrm{MSE}} \right)
 $$
 
-where \( I_{\max} \) denotes the maximum possible pixel intensity.  
+ 
 Higher PSNR values indicate better denoising performance.
 
 ### Structural Similarity Index Measure (SSIM)
