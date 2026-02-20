@@ -139,7 +139,9 @@ approximately IID Gaussian.
 We use a **Denoising Diffusion Probabilistic Model (DDPM)** trained exclusively
 on clean MRI images. During training, DDPM corrupts clean images as:
 
-Ĩ = x₀ + σ·ε,    ε ~ N(0, 1) in training 
+$$
+\tilde{I} = x_0 + \sigma \cdot \varepsilon, \quad \varepsilon \sim \mathcal{N}(0, 1)
+$$
 
 ---
 <p align="center">
@@ -148,8 +150,9 @@ on clean MRI images. During training, DDPM corrupts clean images as:
 
 ---
 After VST, the stabilized image:
-
-Ĩ = A₀ + σ(x).N(x;0,1),  
+$$
+\tilde{I} = A_0 + \sigma(x)\,\mathcal{N}(0, 1)
+$$ 
 
 At inference time, the stabilized image produced by VSTNet is denoised using
 the pretrained DDPM. We employ **DDIM sampling** with a weighted data-fidelity
