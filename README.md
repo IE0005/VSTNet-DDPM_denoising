@@ -52,14 +52,14 @@ The workflow of the proposed denoising pipeline is as follows:
 ## Pipeline Summary
 Training
 ### Stage I — Variance Stabilization (Physics-Informed)
-Add spatially varying Rician noise to the magnitude images
+#### Add spatially varying Rician noise to the magnitude images
 ---
 <p align="center">
   <img src="non-stat_rician_noise_add.png" width="600"/>
 </p>
 ---
 
-1. **SigmaNet** predicts spatial noise variance
+1. **SigmaNet** predicts spatial noise variance.
 ---
 <p align="center">
   <img src="sigmanet.png" width="600"/>
