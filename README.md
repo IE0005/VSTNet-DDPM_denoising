@@ -59,7 +59,7 @@ The proposed denoising pipeline consists of four stages:
 </p>
 ---
 
-1. **SigmaNet** SigmaNet is a lightweight convolutional neural network designed to estimate
+1. **SigmaNet** is a lightweight convolutional neural network designed to estimate
 the spatially varying noise variance map σ₀(x) from noisy MRI
 magnitude images.predicts spatial noise variance.
 ---
@@ -68,11 +68,11 @@ magnitude images.predicts spatial noise variance.
 </p>
 ---
 
-2. **VSTNet** learns a data-driven variance-stabilizing transform that converts
-non-stationary Rician noise into an approximately zero-mean, unit-variance
-Gaussian distribution.
-Given the MRI magnitude image I(x) and the spatial noise estimate σ₀(x) from
-SigmaNet, VSTNet predicts two positive parameters Θ₁(x) and Θ₂(x):
+2. **VSTNet** is a simple U-Net that learns a data-driven variance-stabilizing
+transform to convert non-stationary Rician noise into an approximately
+zero-mean, unit-variance Gaussian distribution. Given the MRI magnitude image
+\( I(x) \) and the spatial noise estimate \( \sigma_0(x) \) from SigmaNet,
+VSTNet predicts two positive parameters \( \Theta_1(x) \) and \( \Theta_2(x) \).
 
 
 ## VSTNet Formulation
