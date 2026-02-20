@@ -30,7 +30,7 @@ In this study, we use the T1, T2, and PD modalities with slice thicknesses of 1,
 
 ---
 <p align="center">
-  <img src=“dataset.png" width=“600"/>
+  <img src="dataset.png" width="600"/>
 </p>
 
 ---
