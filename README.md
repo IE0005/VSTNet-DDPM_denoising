@@ -50,7 +50,7 @@ The proposed denoising pipeline consists of four stages:
 
 ---
 ## Pipeline Summary
-##Training
+# Training
 ### Stage I — Variance Stabilization (Physics-Informed)
 #### Add spatially varying Rician noise to the magnitude images
 ---
@@ -152,6 +152,8 @@ After VST, the stabilized image:
 $$
 \tilde{I} = A_0 + \sigma(x)\,\mathcal{N}(0,1)
 $$
+
+## Inference
 
 At inference time, the stabilized image produced by VSTNet is denoised using the
 pretrained DDPM. We employ DDIM sampling with a weighted data-fidelity term to
