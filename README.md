@@ -72,9 +72,7 @@ magnitude images.predicts spatial noise variance.
 transform to convert non-stationary Rician noise into an approximately
 zero-mean, unit-variance Gaussian distribution.
 
-Given the MRI magnitude image
-\( I(x) \) and the spatial noise estimate \( \sigma_0(x) \) from SigmaNet,
-VSTNet predicts two positive parameters \( \Theta_1(x) \) and \( \Theta_2(x) \).
+Given the MRI magnitude image I(x) and the spatial noise estimate σ₀(x) from SigmaNet, VSTNet predicts two positive parameters Θ₁(x) and Θ₂(x):
 
 
 ## VSTNet Formulation
