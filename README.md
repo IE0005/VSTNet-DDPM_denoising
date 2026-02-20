@@ -70,7 +70,9 @@ magnitude images.predicts spatial noise variance.
 
 2. **VSTNet** is a simple U-Net that learns a data-driven variance-stabilizing
 transform to convert non-stationary Rician noise into an approximately
-zero-mean, unit-variance Gaussian distribution. Given the MRI magnitude image
+zero-mean, unit-variance Gaussian distribution.
+
+Given the MRI magnitude image
 \( I(x) \) and the spatial noise estimate \( \sigma_0(x) \) from SigmaNet,
 VSTNet predicts two positive parameters \( \Theta_1(x) \) and \( \Theta_2(x) \).
 
