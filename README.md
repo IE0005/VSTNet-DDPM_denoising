@@ -130,13 +130,13 @@ VSTNet is trained to ensure that the stabilized image \( \tilde{I}(x) \) follows
 an approximately standard Gaussian distribution by minimizing a
 moment-matching loss:
 
-
+$$
 \mathcal{J} =
 \lambda_1 (1 - \mathrm{Var}(\tilde{I}))^2 +
 \lambda_2 \mathrm{Skew}(\tilde{I})^2 +
 \lambda_3 \mathrm{ExcessKurt}(\tilde{I})^2 +
 \lambda_4 \mathrm{Mean}(\tilde{I})^2
-
+$$
 
 The optimal parameters are obtained as:
 
