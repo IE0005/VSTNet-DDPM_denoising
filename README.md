@@ -116,8 +116,9 @@ $$
 \Theta^* = \arg\min_{\Theta} \mathcal{J}
 $$
 
+Where, 
+
 $$
-where:
 - \( \mathrm{Var}(\cdot) \) enforces unit variance  
 - \( \mathrm{Skew}(\cdot) \) enforces symmetry  
 - \( \mathrm{ExcessKurt}(\cdot) \) penalizes heavy tails  
@@ -150,6 +151,7 @@ $$
 
 ---
 After VST, the stabilized image:
+
 $$
 \tilde{I} = A_0 + \sigma(x)\,\mathcal{N}(0, 1)
 $$ 
