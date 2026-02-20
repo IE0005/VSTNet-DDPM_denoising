@@ -81,13 +81,11 @@ $$
 \Theta_2(x) \ge 0
 $$
 
-Given the MRI magnitude image \( I(x) \) and the spatial noise estimate
-\( \sigma_0(x) \), the variance-stabilized image is computed as:
-
+Given the MRI magnitude image I(x) and the spatial noise estimate σ₀(x), the variance-stabilized image is computed as:
 
 
 $$
-\tilde{I}(x) = \sigma_0(x)\sqrt{\frac{\Theta_1(x)^2 I(x)^2}{\sigma_0(x)^2} - \Theta_2(x)}
+\tilde{I}(x) = \sigma_0(x)\sqrt{\max\!\left(\frac{\Theta_1(x)^2 I(x)^2}{\sigma_0(x)^2} - \Theta_2(x),\, 0\right)}
 $$
 
 
@@ -145,7 +143,7 @@ $$
 After VST, the stabilized image:
 
 $$
-\tilde{I} = A_0 + \sigma(x)\,\mathcal{N}(0,1)
+\tilde{I} = A_0 + \sigma(x) \cdot \mathcal{N}(x;0,1)
 $$
 
 ### Inference
