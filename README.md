@@ -59,32 +59,35 @@ Training
 </p>
 ---
 
-1. **SigmaNet** predicts spatial noise variance.
+1. **SigmaNet** SigmaNet is a lightweight convolutional neural network designed to estimate
+the spatially varying noise variance map σ₀(x) from noisy MRI
+magnitude images.predicts spatial noise variance.
 ---
 <p align="center">
   <img src="sigmanet.png" width="600"/>
 </p>
 ---
 
-2. **VSTNet** transforms non-stationary Rician → stationary Gaussian
+2. **VSTNet** learns a data-driven variance-stabilizing transform that converts
+non-stationary Rician noise into an approximately zero-mean, unit-variance
+Gaussian distribution.
+Given the MRI magnitude image I(x) and the spatial noise estimate σ₀(x) from
+SigmaNet, VSTNet predicts two positive parameters Θ₁(x) and Θ₂(x):
 
-Given I(x) (MRI magnitude) and σ₀(x) (noise variance from SigmaNet), VSTNet predicts two positive parameters:
-
-
-Θ = (Θ₁ , Θ₂), 
+$Θ = (Θ₁ , Θ₂), 
 
 Θ₁(x) > 0
 
-Θ₂(x) ≥ 0
+Θ₂(x) ≥ 0$
 
 
 The stabilized image is computed as:
 
-Ĩ(x) = σ₀(x) * √( (Θ₁(x)² * I(x)² / σ₀(x)²) − Θ₂(x) )
+$Ĩ(x) = σ₀(x) * √( (Θ₁(x)² * I(x)² / σ₀(x)²) − Θ₂(x) )$
 
 VSTNet is trained to enforce approximate Gaussianity below:
 
-J = λ₁·(1 − Var(Ĩ))² + λ₂·Skew(Ĩ)² + λ₃·ExcessKurt(Ĩ)² + λ₄·Mean(Ĩ)²
+$J = λ₁·(1 − Var(Ĩ))² + λ₂·Skew(Ĩ)² + λ₃·ExcessKurt(Ĩ)² + λ₄·Mean(Ĩ)²$
 
 
 Where:
@@ -108,7 +111,7 @@ Training objective:
 </p>
 ---
 
-### Stage II — Diffusion Denoising
+### Stage II — Denoising Diffusion 
 
 Diffusion denoisers operate on IID Gaussian corrupted images:
 
@@ -137,7 +140,7 @@ The diffusion model then removes the approximately IID Gaussian noise from the v
 ✔ Handles **non-stationary Rician** MRI noise  
 ✔ Converts MRI noise to **Approximate Gaussian** for diffusion    
 ✔ Uses: DDPM for training and DDIM with weighted data fidelity for inference.  
-✔ Evaluated the denoised images using Peak Signal-to-Noise Ratio (PSNR) and Structural Similarity Index (SSIM) scores. 
+✔ Evaluated the denoised images using Peak Signal-to-Noise Ratio (PSNR) and Structural Similarity Index Measure (SSIM) scores. 
 
 ---
 
