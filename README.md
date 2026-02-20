@@ -153,12 +153,12 @@ $$
 After VST, the stabilized image:
 
 $$
-\tilde{I} = A_0 + \sigma(x)\,\mathcal{N}(0, 1)
-$$ 
+\tilde{I} = A_0 + \sigma(x)\,\mathcal{N}(0,1)
+$$
 
-At inference time, the stabilized image produced by VSTNet is denoised using
-the pretrained DDPM. We employ **DDIM sampling** with a weighted data-fidelity
-term to improve robustness on previously unseen data.
+At inference time, the stabilized image produced by VSTNet is denoised using the
+pretrained DDPM. We employ DDIM sampling with a weighted data-fidelity term to
+improve robustness on previously unseen data.
 ---
 <p align="center">
   <img src="ddim.png" width="600"/>
