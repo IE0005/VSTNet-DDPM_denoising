@@ -20,7 +20,7 @@ Importantly, the diffusion model is trained only on clean images; the noisy imag
 During inference, a weighted data-fidelity term is incorporated as a regularization mechanism to enforce consistency with the observed measurements and to improve robustness when denoising previously unseen data.
 
 
-To resolve this, we propose a **two-stage denoising pipeline** for training and end-to-end denoising in the inferences as follows. 
+To address this challenge, we propose a **two-stage denoising pipeline** that supports both training and end-to-end denoising during inference.
 
 
 Dataset: 
@@ -33,12 +33,12 @@ In this study, we use the T1, T2, and PD modalities with slice thicknesses of 1,
   <img src="dataset.png" width="600"/>
 </p>
 
----
-The workflow of the proposed denoising pipeline is as follows: 
-1. Add synthetic spatially varying Rician noise to the magnitude images. 
-2. Make an estimate of the spatially varying noise. 
-3. Noise variance stabilization from non-stationary Rican to approximate Gaussian distribution. 
-4. Use a Diffusion model that is trained to remove Gaussian noise. 
+The proposed denoising pipeline consists of four stages:
+1. Add synthetic spatially varying Rician noise to MRI magnitude images.
+2. Estimate the spatially varying noise characteristics.
+3. Apply variance stabilization to transform non-stationary Rician noise into an
+   approximately Gaussian distribution.
+4. Denoise the stabilized image using a diffusion model trained on Gaussian noise.
 
 
 > **Add Non-stationary Rician noise → SigmaNet → VSTNet → Diffusion → Denoised MRI**
