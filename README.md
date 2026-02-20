@@ -26,7 +26,7 @@ To resolve this, we propose a **two-stage denoising pipeline** for training and 
 Dataset: 
 
 We use the Simulated Brain Database (SBD) (https://brainweb.bic.mni.mcgill.ca/), which provides 3D brain MRI volumes generated from normal and multiple sclerosis (MS) anatomical models. The dataset includes T1-, T2-, and proton-density (PD) weighted images with varying slice thickness, noise levels, and intensity non-uniformity. The voxel values are in magnitude, not complex. 
-In this study, we use the T1, T2, and PD modalities with slice thicknesses of 1, 3, 5, 7, and 9 mm, all generated with zero noise and zero intensity non-uniformity, which serve as ground-truth clean images. We only used the coronal 2D view slices for both training and final denoising purposes to reduce computational expenses for now. 
+In this study, we use the T1, T2, and PD modalities with slice thicknesses of 1, 3, 5, 7, and 9 mm, all generated with zero noise and zero intensity non-uniformity, which serve as ground-truth clean images. To reduce computational cost, we restrict our experiments to coronal 2D slices for both training and inference. The dataset contains a total of 1,938 coronal slices, which are partitioned into 80% for training and 20% for testing.
 
 ---
 <p align="center">
@@ -402,7 +402,7 @@ structural similarity.
 
 
 The proposed **VSTNet-DDPM** method outperforms FoI-BM3D and Noise2Detail in both
-PSNR and SSIM.
+PSNR and SSIM. 
 
 ## References
 
