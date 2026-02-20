@@ -320,64 +320,49 @@ and **Structural Similarity Index Measure (SSIM)**.
 
 ### Peak Signal-to-Noise Ratio (PSNR)
 
-PSNR measures pixel-wise reconstruction fidelity with respect to the clean
+PSNR measures pixel-wise reconstruction fidelity with respect to a clean
 reference image.
 
-Given a clean image $I$ and a denoised image $\hat{I}$, the mean squared error
-(MSE) is defined as:
+The mean squared error (MSE) between a clean image \( I \) and a denoised image
+\( \hat{I} \) is defined as:
 
 $$
-\mathrm{MSE}
-=
-\frac{1}{N}
-\sum_{i=1}^{N}
-\left(I_i - \hat{I}_i\right)^2
+\mathrm{MSE} = \frac{1}{N} \sum_{i=1}^{N} \left(I_i - \hat{I}_i\right)^2
 $$
 
-where $N$ is the total number of pixels.
+where \( N \) is the total number of pixels.
 
-The PSNR (in decibels) is then computed as:
+The PSNR (in decibels) is computed as:
 
 $$
-\mathrm{PSNR}
-=
-10 \log_{10}
-\left(
-\frac{I_{\max}^2}{\mathrm{MSE}}
-\right)
+\mathrm{PSNR} = 10 \log_{10} \left( \frac{I_{\max}^2}{\mathrm{MSE}} \right)
 $$
 
-where $I_{\max}$ denotes the maximum possible pixel intensity.
-
+where \( I_{\max} \) denotes the maximum possible pixel intensity.  
 Higher PSNR values indicate better denoising performance.
-
----
 
 ### Structural Similarity Index Measure (SSIM)
 
 SSIM evaluates image quality based on luminance, contrast, and structural
 similarity.
 
-The SSIM between the clean image $I$ and the denoised image $\hat{I}$ is defined
-as:
+The SSIM between a clean image \( I \) and a denoised image \( \hat{I} \) is
+defined as:
 
 $$
-\mathrm{SSIM}(I,\hat{I})
-=
+\mathrm{SSIM}(I,\hat{I}) =
 \frac{(2\mu_I \mu_{\hat{I}} + C_1)(2\sigma_{I\hat{I}} + C_2)}
 {(\mu_I^2 + \mu_{\hat{I}}^2 + C_1)(\sigma_I^2 + \sigma_{\hat{I}}^2 + C_2)}
 $$
 
 where:
-- $\mu_I, \mu_{\hat{I}}$ are the mean intensities
-- $\sigma_I^2, \sigma_{\hat{I}}^2$ are the variances
-- $\sigma_{I\hat{I}}$ is the covariance between $I$ and $\hat{I}$
-- $C_1, C_2$ are small constants for numerical stability
+- \( \mu_I, \mu_{\hat{I}} \) are mean intensities  
+- \( \sigma_I^2, \sigma_{\hat{I}}^2 \) are variances  
+- \( \sigma_{I\hat{I}} \) is the covariance  
+- \( C_1, C_2 \) are stability constants  
 
-SSIM values range from $[-1,1]$, with values closer to $1$ indicating higher
+SSIM values range from \([-1, 1]\), with values closer to 1 indicating higher
 structural similarity.
-
----
 
 ### Evaluation Protocol
 
@@ -413,9 +398,14 @@ structural similarity.
   fine structural details by learning residual noise patterns from noisy data.
   It relies primarily on learned image statistics. 
 
-####The proposed **VSTNet-DDPM** method outperforms FoI-BM3D and Noise2Detail in both
+
+
+The proposed **VSTNet-DDPM** method outperforms FoI-BM3D and Noise2Detail in both
 PSNR and SSIM.
----
+
+
+
+
 ## 📄 License
 
 Released under the [MIT License](LICENSE).
