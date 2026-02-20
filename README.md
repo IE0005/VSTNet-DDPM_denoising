@@ -118,18 +118,13 @@ $$
 
  
 
-where:
-
-\( \mu_I, \mu_{\hat{I}} \) are mean intensities
-
-
-\( \sigma_I^2, \sigma_{\hat{I}}^2 \) are variances
-
-
-\( \sigma_{I\hat{I}} \) is the covariance
-
-\( C_1, C_2 \) are stability constants
-
+<p>where:</p>
+<ul>
+  <li><em>μ</em><sub>I</sub>, <em>μ</em><sub>Î</sub> are mean intensities</li>
+  <li><em>σ</em><sub>I</sub><sup>2</sup>, <em>σ</em><sub>Î</sub><sup>2</sup> are variances</li>
+  <li><em>σ</em><sub>IÎ</sub> is the covariance</li>
+  <li><em>C</em><sub>1</sub>, <em>C</em><sub>2</sub> are stability constants</li>
+</ul>
 
 
 <p align="center">
