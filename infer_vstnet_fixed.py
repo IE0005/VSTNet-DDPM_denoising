@@ -1,9 +1,4 @@
 # infer_vstnet_fixed.py
-# - FIXES pad batching crash
-# - SAVES I_tilde for DDPM in a consistent way:
-#     * RAW float32: out_dir/I_tilde_npy/<key>.npy   (RECOMMENDED for DDPM)
-#     * PNG with TRAINING-style clamp(0,1): out_dir/I_tilde_png/<key>.png
-# - Also optionally saves Ihp and Z as .npy (no normalization)
 
 import os, glob, argparse, csv
 import numpy as np
@@ -391,3 +386,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
