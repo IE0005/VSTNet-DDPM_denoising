@@ -399,6 +399,13 @@ structural similarity.
 The proposed **VSTNet-DDPM** method outperforms FoI-BM3D and Noise2Detail in both
 PSNR and SSIM. 
 
+## Limitations
+
+- Training the DDPM is computationally expensive and requires significant GPU resources.
+- The current implementation operates on 2D coronal slices rather than full 3D volumes.
+- Evaluation is performed on synthetically generated non-stationary Rician noise.
+- The proposed model may exhibit slightly reduced image contrast in some denoised outputs, reflecting smoothing bias in the DDPM prior.
+
 ## References
 
 [1] Foi, Alessandro. "Noise estimation and removal in MR imaging: The variance-stabilization approach." 2011 IEEE International symposium on biomedical imaging: from nano to macro. IEEE, 2011.
