@@ -50,7 +50,7 @@ The workflow of the proposed denoising pipeline is as follows:
 
 ---
 ## Pipeline Summary
-Training
+##Training
 ### Stage I — Variance Stabilization (Physics-Informed)
 #### Add spatially varying Rician noise to the magnitude images
 ---
@@ -75,7 +75,7 @@ Given the MRI magnitude image I(x) and the spatial noise estimate σ₀(x) from
 SigmaNet, VSTNet predicts two positive parameters Θ₁(x) and Θ₂(x):
 
 
-### VSTNet Formulation
+## VSTNet Formulation
 
 VSTNet predicts two spatially varying parameters at each pixel:
 
@@ -96,7 +96,7 @@ $$
 $$
 
 
-### Gaussianity-Enforcing Objective
+## Gaussianity-Enforcing Objective
 
 VSTNet is trained to ensure that the stabilized image $$\( \tilde{I}(x) \)$$ follows
 an approximately standard Gaussian distribution by minimizing a
@@ -390,12 +390,12 @@ structural similarity.
 
 **Baseline Methods.**
 
-- **FoI-BM3D** is a classical non-local variance stabilization and denoising method that extends BM3D by
+- **FoI-BM3D** [1] is a classical non-local variance stabilization and denoising method that extends BM3D by
   incorporating a fixed variance-stabilizing transform for Rician noise.
   While effective for stationary noise assumptions, its performance degrades
   in the presence of spatially varying (non-stationary) noise.
 
-- **Noise2Detail** is a data-driven deep learning denoiser designed to enhance
+- **Noise2Detail** [2] is a data-driven deep learning denoiser designed to enhance
   fine structural details by learning residual noise patterns from noisy data.
   It relies primarily on learned image statistics. 
 
@@ -404,7 +404,11 @@ structural similarity.
 The proposed **VSTNet-DDPM** method outperforms FoI-BM3D and Noise2Detail in both
 PSNR and SSIM.
 
+## References
 
+[1] Foi, Alessandro. "Noise estimation and removal in MR imaging: The variance-stabilization approach." 2011 IEEE International symposium on biomedical imaging: from nano to macro. IEEE, 2011.
+
+[2] Chobola, Tomáš, Julia A. Schnabel, and Tingying Peng. "Lightweight Data-Free Denoising for Detail-Preserving Biomedical Image Restoration." International Conference on Medical Image Computing and Computer-Assisted Intervention. Cham: Springer Nature Switzerland, 2025.
 
 
 ## 📄 License
